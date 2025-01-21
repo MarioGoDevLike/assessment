@@ -88,7 +88,6 @@ const RootNavigator = () => {
     <SafeAreaProvider>
       <NavigationContainer ref={navigationRef}>
         <RootStackNav.Navigator>
-          {/* Add a condition to navigate between Onboarding or Main screens */}
           <RootStackNav.Screen
             name={Routes.onBoardingStack}
             component={OnBoardingStack}
