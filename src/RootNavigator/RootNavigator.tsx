@@ -30,12 +30,12 @@ const OnBoardingStack = () => (
     <RootStackNav.Screen
       name={Routes.enterCompanyIdScreen}
       component={EnterCompanyId}
-      options={{headerShown: false}}
+      options={{headerShown: true}}
     />
     <RootStackNav.Screen
-      name={Routes.pickvoiceScreen}
+      name={Routes.pickVoiceScreen}
       component={PickVoice}
-      options={{headerShown: false}}
+      options={{headerShown: true}}
     />
   </RootStackNav.Navigator>
 );
