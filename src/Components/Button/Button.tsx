@@ -7,9 +7,13 @@ import {
 import React from 'react';
 import {styles} from './styles';
 
-const Button = ({text, ...rest}: {text: string} & TouchableOpacityProps) => {
+const Button = ({
+  text,
+  style,
+  ...rest
+}: {text: string} & TouchableOpacityProps) => {
   return (
-    <TouchableOpacity style={styles.btnContainer} {...rest}>
+    <TouchableOpacity style={[styles.btnContainer, style]} {...rest}>
       <Text style={styles.textStyle}>{text}</Text>
     </TouchableOpacity>
   );
