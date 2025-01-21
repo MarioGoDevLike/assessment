@@ -1,20 +1,20 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View} from 'react-native';
 import React, {useCallback} from 'react';
 import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {Routes} from '../../types/type';
-
+import Button from '../../Components/Button/Button';
+``;
 const Welcome = () => {
   const navigation = useNavigation();
+
   const onButtonPress = useCallback(() => {
     navigation.navigate(Routes.enterCompanyIdScreen as never);
   }, []);
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.getStartedBtn} onPress={onButtonPress}>
-        <Text style={styles.getStartedText}>GET STARTED</Text>
-      </TouchableOpacity>
+      <Button text="GET STARTED" onPress={onButtonPress} />
     </View>
   );
 };
