@@ -32,11 +32,6 @@ const OnBoardingStack = () => (
       component={EnterCompanyId}
       options={{headerShown: true}}
     />
-    <RootStackNav.Screen
-      name={Routes.pickVoiceScreen}
-      component={PickVoice}
-      options={{headerShown: true}}
-    />
   </RootStackNav.Navigator>
 );
 
@@ -47,11 +42,6 @@ const MainScreenStack = () => (
       component={MainScreen}
       options={{headerShown: false}}
     />
-    <RootStackNav.Screen
-      name={Routes.voiceBotScreen}
-      component={VoiceBot}
-      options={{headerShown: false}}
-    />
   </RootStackNav.Navigator>
 );
 
@@ -60,7 +50,7 @@ const SettingsStack = () => (
     <RootStackNav.Screen
       name={Routes.settingsScreen}
       component={Settings}
-      options={{headerShown: false}}
+      options={{headerShown: false, presentation: 'modal'}}
     />
     <RootStackNav.Screen
       name={Routes.pickVoiceScreen}
@@ -71,6 +61,11 @@ const SettingsStack = () => (
       name={Routes.setCompanyIdScreen}
       component={SetCompanyId}
       options={{headerShown: false}}
+    />
+    <RootStackNav.Screen
+      name={Routes.enterCompanyIdScreen}
+      component={EnterCompanyId}
+      options={{headerShown: true}}
     />
   </RootStackNav.Navigator>
 );
@@ -101,7 +96,25 @@ const RootNavigator = () => {
           <RootStackNav.Screen
             name={Routes.settingsStack}
             component={SettingsStack}
-            options={{headerShown: false}}
+            options={{headerShown: false, animation: 'slide_from_bottom'}}
+          />
+          <RootStackNav.Screen
+            name={Routes.pickVoiceScreen}
+            component={PickVoice}
+            options={{
+              headerShown: true,
+              animation: 'slide_from_bottom',
+              presentation: 'modal',
+            }}
+          />
+          <RootStackNav.Screen
+            name={Routes.voiceBotScreen}
+            component={VoiceBot}
+            options={{
+              headerShown: false,
+              presentation: 'modal',
+              animation: 'slide_from_bottom',
+            }}
           />
         </RootStackNav.Navigator>
       </NavigationContainer>
