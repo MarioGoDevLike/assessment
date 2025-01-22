@@ -42,6 +42,14 @@ const MainScreenStack = () => (
       component={MainScreen}
       options={{headerShown: false}}
     />
+    <RootStackNav.Screen
+      name={Routes.voiceBotScreen}
+      component={VoiceBot}
+      options={{
+        headerShown: false,
+        animation: 'slide_from_bottom',
+      }}
+    />
   </RootStackNav.Navigator>
 );
 
@@ -50,7 +58,7 @@ const SettingsStack = () => (
     <RootStackNav.Screen
       name={Routes.settingsScreen}
       component={Settings}
-      options={{headerShown: false, presentation: 'modal'}}
+      options={{headerShown: false}}
     />
 
     <RootStackNav.Screen
@@ -98,23 +106,17 @@ const RootNavigator = () => {
           <RootStackNav.Screen
             name={Routes.settingsStack}
             component={SettingsStack}
-            options={{headerShown: false, animation: 'slide_from_bottom'}}
+            options={{
+              headerShown: false,
+              animation: 'slide_from_bottom',
+              presentation: 'modal',
+            }}
           />
           <RootStackNav.Screen
             name={Routes.pickVoiceScreen}
             component={PickVoice}
             options={{
               headerShown: true,
-              animation: 'slide_from_bottom',
-              presentation: 'modal',
-            }}
-          />
-          <RootStackNav.Screen
-            name={Routes.voiceBotScreen}
-            component={VoiceBot}
-            options={{
-              headerShown: false,
-              presentation: 'modal',
               animation: 'slide_from_bottom',
             }}
           />

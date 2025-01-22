@@ -1,9 +1,18 @@
-import {View, Text, Image, Pressable} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  Pressable,
+  ViewProps,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 import React, {useCallback} from 'react';
 import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {Routes} from '../../types/type';
 import Button from '../../Components/Button/Button';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const MainScreen = () => {
   const navigation = useNavigation();
@@ -16,8 +25,11 @@ const MainScreen = () => {
     navigation.navigate(Routes.voiceBotScreen as never);
   }, []);
 
+  const {top} = useSafeAreaInsets();
+  const topStyle: StyleProp<ViewStyle> = {paddingTop: top};
+
   return (
-    <View style={styles.mainScreenContainer}>
+    <View style={[styles.mainScreenContainer, topStyle]}>
       <View style={styles.settingsIconContainer}>
         <Pressable onPress={onSettingsPress}>
           <Image
