@@ -4,9 +4,12 @@ import {styles} from './styles';
 import Button from '../../Components/Button/Button';
 import {useNavigation} from '@react-navigation/native';
 import {Routes} from '../../types/type';
+import {useAtom} from 'jotai';
+import {companyIdAtom} from '../../atoms';
 
 const EnterCompanyId = () => {
   const navigation = useNavigation();
+  const [companyId, setCompanyId] = useAtom(companyIdAtom);
 
   const onContinuePress = useCallback(() => {
     navigation.navigate(Routes.pickVoiceScreen as never);
@@ -15,13 +18,13 @@ const EnterCompanyId = () => {
   return (
     <View style={styles.enterCompanyContainer}>
       <View style={styles.enterCompanyInput}>
-        <TextInput placeholder="Enter Company ID" />
+        <TextInput
+          value={companyId}
+          placeholder="Enter Company ID"
+          onChangeText={setCompanyId}
+        />
       </View>
-      <Button
-        style={styles.buttonContinue}
-        text="Continue"
-        onPress={onContinuePress}
-      />
+      <Button disabled={!companyId} text="Continue" onPress={onContinuePress} />
     </View>
   );
 };

@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
     backgroundColor: 'aqua',
     padding: 10,
     borderRadius: 5,
+    marginTop: 10,
   },
   textStyle: {
     color: 'black',

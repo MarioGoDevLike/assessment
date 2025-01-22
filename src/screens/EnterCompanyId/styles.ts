@@ -18,7 +18,4 @@ export const styles = StyleSheet.create({
     padding: 5,
     width: '80%',
   },
-  buttonContinue: {
-    marginTop: 10,
-  },
 });
