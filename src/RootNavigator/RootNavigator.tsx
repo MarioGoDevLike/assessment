@@ -52,15 +52,17 @@ const SettingsStack = () => (
       component={Settings}
       options={{headerShown: false, presentation: 'modal'}}
     />
+
     <RootStackNav.Screen
       name={Routes.pickVoiceScreen}
       component={VoiceBot}
-      options={{headerShown: false}}
+      options={{headerShown: true}}
     />
+
     <RootStackNav.Screen
       name={Routes.setCompanyIdScreen}
       component={SetCompanyId}
-      options={{headerShown: false}}
+      options={{headerShown: true}}
     />
     <RootStackNav.Screen
       name={Routes.enterCompanyIdScreen}
