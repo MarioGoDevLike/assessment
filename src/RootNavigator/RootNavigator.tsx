@@ -3,6 +3,7 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import RNBootSplash from 'react-native-bootsplash';
 import {
   createNavigationContainerRef,
+  LinkingOptions,
   NavigationContainer,
 } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -15,6 +16,9 @@ import MainScreen from '../screens/MainScreen/MainScreen.tsx';
 import VoiceBot from '../screens/VoiceBot/VoiceBot.tsx';
 import SetCompanyId from '../screens/SetCompanyId/SetCompanyId.tsx';
 import Settings from '../screens/Settings/Settings.tsx';
+import {Linking} from 'react-native';
+import {handleDeepLink} from '../helpers';
+import {constants} from '../config/contants.ts';
 
 export const navigationRef = createNavigationContainerRef<RootParamList>();
 
@@ -88,10 +92,39 @@ const RootNavigator = () => {
 
     init();
   }, []);
+  const linking: LinkingOptions<ReactNavigation.RootParamList> = {
+    prefixes: [constants.deepLinkPrefix],
+    config: {
+      initialRouteName: Routes.settingsStack as never,
+      screens: {
+        [Routes.setCompanyIdScreen]: {
+          path: 'set_company_id',
+          exact: true,
+        },
+      },
+    },
+    async getInitialURL() {
+      const url = await Linking.getInitialURL();
+
+      if (url) {
+        handleDeepLink(url);
+        return url;
+      }
+    },
+  };
+  useEffect(() => {
+    const subscribe = Linking.addEventListener('url', e =>
+      handleDeepLink(e.url),
+    );
+
+    return () => {
+      subscribe.remove();
+    };
+  }, []);
 
   return (
     <SafeAreaProvider>
-      <NavigationContainer ref={navigationRef}>
+      <NavigationContainer linking={linking} ref={navigationRef}>
         <RootStackNav.Navigator>
           <RootStackNav.Screen
             name={Routes.onBoardingStack}
