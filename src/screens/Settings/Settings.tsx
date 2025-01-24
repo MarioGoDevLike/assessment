@@ -9,9 +9,7 @@ import {navigationRef} from '../../RootNavigator/RootNavigator';
 const Settings = () => {
   const navigation = useNavigation();
   const onPickVoiceScreenPress = useCallback(() => {
-    navigationRef.navigate(Routes.pickVoiceScreen, {
-      shouldNavigateBack: true,
-    });
+    navigationRef.navigate(Routes.pickVoiceScreen);
   }, []);
 
   const onCompanyIdPress = useCallback(() => {

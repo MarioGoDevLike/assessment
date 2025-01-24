@@ -14,7 +14,6 @@ const EnterCompanyId = () => {
   const onContinuePress = useCallback(() => {
     navigation.navigate(Routes.pickVoiceScreen as never);
   }, []);
-
   return (
     <View style={styles.enterCompanyContainer}>
       <View style={styles.enterCompanyInput}>
