@@ -1,9 +1,11 @@
+import {Routes} from '../types/type';
+
 export type RootParamList = {
-  welcome: undefined;
-  enterCompanyId: undefined;
-  pickVoice: undefined;
-  mainScreen: undefined;
-  voiceBotScreen: undefined;
-  settingsScreen: undefined;
-  setCompanyIdScreen: undefined;
+  [Routes.welcomeScreen]: undefined;
+  [Routes.enterCompanyIdScreen]: undefined;
+  [Routes.pickVoiceScreen]: {shouldNavigateBack: boolean};
+  [Routes.mainScreen]: undefined;
+  [Routes.voiceBotScreen]: undefined;
+  [Routes.settingsScreen]: undefined;
+  [Routes.setCompanyIdScreen]: undefined;
 };

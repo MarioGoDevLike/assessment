@@ -67,7 +67,7 @@ const SettingsStack = () => (
 
     <RootStackNav.Screen
       name={Routes.pickVoiceScreen}
-      component={VoiceBot}
+      component={PickVoice}
       options={{headerShown: true}}
     />
 
@@ -89,9 +89,14 @@ const RootNavigator = () => {
     const init = async () => {
       await RNBootSplash.hide({fade: true});
     };
-
-    init();
+    const timeout = setTimeout(() => {
+      init();
+    }, 3000);
+    return () => {
+      clearTimeout(timeout);
+    };
   }, []);
+
   const linking: LinkingOptions<ReactNavigation.RootParamList> = {
     prefixes: [constants.deepLinkPrefix],
     config: {
@@ -112,6 +117,7 @@ const RootNavigator = () => {
       }
     },
   };
+
   useEffect(() => {
     const subscribe = Linking.addEventListener('url', e =>
       handleDeepLink(e.url),
@@ -151,6 +157,7 @@ const RootNavigator = () => {
             options={{
               headerShown: true,
               animation: 'slide_from_bottom',
+              presentation: 'modal',
             }}
           />
         </RootStackNav.Navigator>

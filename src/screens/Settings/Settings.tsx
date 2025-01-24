@@ -1,14 +1,17 @@
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import React, {useCallback} from 'react';
 import {styles} from './styles';
 import Button from '../../Components/Button/Button';
 import {useNavigation} from '@react-navigation/native';
 import {Routes} from '../../types/type';
+import {navigationRef} from '../../RootNavigator/RootNavigator';
 
 const Settings = () => {
   const navigation = useNavigation();
   const onPickVoiceScreenPress = useCallback(() => {
-    navigation.navigate(Routes.pickVoiceScreen as never);
+    navigationRef.navigate(Routes.pickVoiceScreen, {
+      shouldNavigateBack: true,
+    });
   }, []);
 
   const onCompanyIdPress = useCallback(() => {
